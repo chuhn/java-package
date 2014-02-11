@@ -6,7 +6,7 @@ j2sdk_control() {
     if [ "${DEB_BUILD_ARCH:0:3}" = "arm" ]; then
         # ARM is only softfloat ATM so if building on armhf
         # force the dependencies to pickup cross platform fu
-        if [ "${DEB_BUILD_ARCH}" == "armhf" ]; then
+        if [ "${DEB_BUILD_ARCH}" == "armhf" -a "${j2se_arch}" != "arm-vfp-hflt" ]; then
             depends="libc6-armel, libsfgcc1, libsfstdc++6"
         fi
         # No browser on ARM yet
